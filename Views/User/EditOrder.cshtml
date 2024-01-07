@@ -1,0 +1,152 @@
+﻿@model Project.Models.Order
+@{
+    ViewData["Title"] = "EditOrder";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewBag.n = ViewBag.userUser;
+}
+
+
+
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/Craft/Create/style.css" />
+    <link rel="stylesheet" href="~/Craft/Edit/style.css" />
+    <link rel="stylesheet" href="~/counter/style.css" />
+    <script src="~/craft/create/javascript.js"></script>
+    <script src="~/counter/JavaScript.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+
+    <style>
+        .check {
+            margin: 0 auto;
+            display: block;
+            width: 6%;
+            block-size: 40px;
+            font-size: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: inherit;
+            border: 0px solid #e6e6e6;
+            background-color: #147ef1;
+            color: white
+        }
+
+            .check:hover {
+                background-color: #0e73e1;
+                color: white;
+            }
+    </style>
+
+    <div class="container emp-profile">
+        <form asp-action="EditOrder" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <input type="hidden" asp-for="UserId" value="@Model.UserId" />
+            
+
+            <input type="hidden" asp-for="CraftId" value="@Model.CraftId" />
+             
+
+           
+              
+
+            <div class="row" style="margin-bottom:30px">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img id="imageResult" src=@Url.Content("~/Images/" +Model.Craft.Imagepath) alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="profile-head">
+                        <h5>
+                            @Model.Craft.Name
+                        </h5>
+                        <h6>
+                            Crafts of @Model.Craft.Category.Name
+                        </h6>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style="margin-left: 60px;">
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-4">
+                                    <label>Name :</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <p> @Model.Craft.Name</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-4">
+                                    <label>Category Name :</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <p> @Model.Craft.Category.Name</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-4">
+                                    <label>Price :</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <p> @Model.Craft.Price $</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-4">
+                                    <label>Description :</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <p> @Model.Craft.Description</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-4">
+                                    <label> Number of Pieces :</label>
+                                </div>
+                                <div class="col-md-4 qty mt-5" style="margin-top: .0rem!important;">
+
+                                    @*<input name="Numpieces" type="number" value="1" min="0" max="20" step="1" />*@
+                                    
+                                    <div class="quantity buttons_added">
+                                        <input type="button" value="-" class="minus">
+                                        <input  type="number" step="1" min="1" max="20" name="quantity" value="@Model.Numpieces" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="">
+                                        <input type="button" value="+" class="plus">
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button type="submit" class="check" style=" margin-left:auto; margin-right:auto; width: 100px;" name="btnAddMore" value="Add to Order">Add to Order</button>
+                                    @*<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Add to Order" />*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+
+
+
+
+</body>
+</html>

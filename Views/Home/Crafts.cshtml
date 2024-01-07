@@ -1,0 +1,166 @@
+﻿@model IEnumerable<Project.Models.Craft>
+@{
+    ViewData["Title"] = "Crafts";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <!-- Basic -->
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Site Metas -->
+        <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- manin stylesheet -->
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="~/Craft/style.css" />
+        <link rel="stylesheet" href="~/Craft/Search/style.css" />
+    
+    </head>
+
+    <body>
+
+ @using (Html.BeginForm())
+     {
+        <div class="bbbootstrap">
+            <div class="container">
+                <div>
+                   
+                        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <input type="text" id="Form_Search" name="searchName" placeholder="Search for your best result in our community" class="InputBox">
+                        <input type="submit" id="Form_Go" class="Button" value="Search">
+
+                    
+
+                </div>
+            </div>
+        </div>
+        
+    <div class="container" style=" padding: 40px; border-radius: 6px; padding-bottom: 0px;">
+        <div class="row">
+            <div class="col-md-12">
+                
+
+                    
+                    <!--simple-->
+                    <div id="sandbox" class="form-group" style="width: 400px;">
+                        <label for="simple">Date</label>
+                        <input name="datefrom"  type="date" style="border-radius: 4% ;" class="form-control" >
+                    </div>
+
+                    <!--component-->
+                   
+                     <div class="input-group date" id="datePicker" style="width: 400px;">
+                        <input name ="dateto" type="date" style="border-radius: 4% ;" class="form-control" >
+                     </div>
+                    <input  type="submit" id="Form_Go" class="Button" value="Submit" style="margin-top: 20px; font-family: 'Open Sans'; font-size: 12px;">
+                
+            </div>
+        </div>
+    </div>
+    }
+        <!-- Start Products  -->
+        <section class="section-products">
+            <div class="container">
+                <style>
+                    .btn {
+                        border: 1px solid black;
+                        background-color: white;
+                        color: black;
+                        padding: 10px 24px;
+                        font-size: 12px;
+                        cursor: pointer;
+                        margin-left: 18px;
+                        margin-bottom: 10px;
+                    }
+
+                    .success {
+                        border-color: #04AA6D;
+                        color: green;
+                    }
+
+                        .success:hover {
+                            background-color: #04AA6D;
+                            color: white;
+                        }
+                </style>
+                
+                <div class="row justify-content-center text-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="header">
+                            <h3> Crafts </h3>
+                            <h2>Products</h2>
+                        </div>
+                    </div>
+                </div>
+
+              
+
+
+                
+
+                <div class="row" style="margin-top: 20px; margin-bottom: 20px">
+                    @{
+                        var count1 = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                       
+                            <div class="col-md-6 col-lg-4 col-xl-3 shadow p-3 mb-5 bg-white rounded" style="border-radius: 5%;margin-left: 70px; margin-bottom: 40px;">
+                                <div id="product-1" class="single-product">
+                                    <div class="part-1" style="margin-bottom: 5px;">
+                                        <a asp-action="InfoCraft" asp-route-id="@item.Id">
+                                        <img src=@Url.Content("~/Images/"+item.Imagepath) asp-append-version="true" alt="" class="part-1::before;" style=" width: 100%; height: 19vw; object-fit: cover;" />
+                                        </a>
+                                        <ul>
+                                        <li><a asp-action="Login" asp-controller="LoginandRegistration"><i class="fas fa-cart-plus"></i></a></li>
+                                            <li><a asp-action="InfoCraft" asp-route-id="@item.Id"><i class="fa fa-info"></i></a></li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="part-2">
+                                <h3 class="product-title" style="color: #ce8460">@item.Name</h3>
+                                <h4 class="product-price" style="font-size: 0.8rem;">Price : @item.Price $</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            count1++;
+                        
+                    }
+                    @if (count1 == 0)
+                    {
+                        <p style="margin-top: 40px; margin-bottom: 40px;">There is no Crafts</p>
+                    }
+                </div>
+
+            </div>
+
+        </section>
+       
+        <script src="~/Home/plugins/jquery/jquery.js"></script>
+        <!-- Bootstrap jQuery -->
+        <script src="~/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/Home/plugins/bootstrap/js/popper.min.js"></script>
+        <!-- Owl caeousel -->
+        <script src="~/Home/plugins/owl-carousel/owl.carousel.min.js"></script>
+        <script src="~/Home/plugins/slick-carousel/slick.min.js"></script>
+        <script src="~/Home/plugins/magnific-popup/magnific-popup.js"></script>
+        <!-- Instagram Feed Js -->
+        <script src="~/Home/plugins/instafeed-js/instafeed.min.js"></script>
+        <!-- Google Map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+        <script src="~/Home/plugins/google-map/gmap.js"></script>
+        <!-- main js -->
+        <script src="~/Home/js/custom.js"></script>
+    </body>
+</html>

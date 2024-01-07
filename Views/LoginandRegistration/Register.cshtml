@@ -1,0 +1,67 @@
+﻿@model Project.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sign Up</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="~/ForLogin/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="~/ForLogin/css/style.css">
+</head>
+
+<body>
+
+	<div class="wrapper" style="background-image: url('/ForLogin/images/full1.jpg');">
+		<div class="inner">
+			<div class="image-holder">
+				<img src="~/ForLogin/images/small1.jpg" alt="">
+			</div>
+			<form asp-action="Register" method="POST"  id="register-form" enctype="multipart/form-data">
+				<h3>Sign Up</h3>
+				<div class="form-group">	
+					
+					<input asp-for="Fname" placeholder="First Name" class="form-control" />					
+					<input asp-for="Lname" placeholder="Last Name" class="form-control">
+				</div>
+				<div class="form-wrapper">
+					<label for="username"></label>
+					<input  asp-for="Username" placeholder="Username" class="form-control" >
+					<i class="zmdi zmdi-account"></i>
+				</div>
+				<div class="form-wrapper">
+					<label for="email"></label>
+					<input asp-for="Email" placeholder="Email Address" class="form-control">
+					<i class="zmdi zmdi-email"></i>
+					
+				</div>
+				
+				<div class="form-wrapper">
+					<label for="password"></label>
+					<input asp-for="Passwordd" type="password"  placeholder="Password" class="form-control">
+					
+				</div>
+				<div class="form-Wrapper">
+
+					<select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
+					
+				</div>
+				<button type="submit" name="signup" id="signup" class="form-submit" value="Register" >
+					Register
+					<i class="zmdi zmdi-arrow-right"></i>
+				</button>
+
+				<a style="align-items: center; vertical-align: middle; display: flex; margin-top: 20px;	justify-content: center;" asp-action="Login" class="signup-image-link">I am Already Member</a>
+			</form>
+		</div>
+	</div>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

@@ -1,0 +1,146 @@
+﻿@model Tuple<IEnumerable<Project.Models.Category> , IEnumerable<Project.Models.Craft>>
+@*@model IEnumerable<>*@
+@{
+	ViewData["Title"] = "HomeUser";
+	Layout = "~/Views/Shared/_UserLayout.cshtml";
+	ViewBag.n = ViewBag.userUser;
+}
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Revolve - Personal Magazine blog Template</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- theme meta -->
+	<meta name="theme-name" content="revolve" />
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="~/Home/images/favicon.ico" type="image/x-icon">
+
+	<!-- THEME CSS
+	================================================== -->
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="~/Home/plugins/bootstrap/css/bootstrap.min.css">
+	<!-- Themify -->
+	<link rel="stylesheet" href="~/Home/plugins/themify/css/themify-icons.css">
+	<link rel="stylesheet" href="~/Home/plugins/slick-carousel/slick-theme.css">
+	<link rel="stylesheet" href="~/Home/plugins/slick-carousel/slick.css">
+	<!-- Slick Carousel -->
+	<link rel="stylesheet" href="~/Home/plugins/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="~/Home/plugins/owl-carousel/owl.theme.default.min.css">
+	<link rel="stylesheet" href="~/Home/plugins/magnific-popup/magnific-popup.css">
+	<!-- manin stylesheet -->
+	<link rel="stylesheet" href="~/Home/css/style.css">
+</head>
+<body>
+
+	<section class="slider mt-4">
+		<div class="container-fluid">
+			<div class="row no-gutters">
+				<div class="col-lg-12 col-sm-12 col-md-12 slider-wrap">
+					@{
+						var count = 0;
+					}
+					@foreach (var item in Model.Item2)
+					{
+						<div class="slider-item" style="width: 548px;">
+							<div class="slider-item-content" >
+									<div class="post-thumb mb-4">
+										<a asp-action="InfoCraft" asp-route-id="@item.Id">
+											<img src=@Url.Content("~/Images/" + item.Imagepath) alt="" class="img-fluid" style="width: 100%; height: 25vw;object-fit: cover;">
+										</a>
+									</div>
+
+									<div class="slider-post-content" style="">
+									<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing" style="font-size: 18px !important;">@item.Name</span>
+									<span class=" text-muted  text-capitalize" style="font-size: 14px !important">@item.Description</span>
+									</div>
+								</div>
+							</div>
+						if (count == 4)
+							break;
+						count++;
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="section-padding">
+		<div class="container">
+
+			<h1 style="text-align:center; margin-bottom:90px;">Categories in Site</h1>
+
+			<div class="row ">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row">
+						@foreach (var item in Model.Item1)
+						{
+
+
+
+
+							<div class="col-lg-4 col-md-6">
+								<article class="post-grid mb-5">
+									<h3 class="post-title mt-1" style="text-align:center"><a href="#-single.html">@item.Name</a></h3>
+									<a class="post-thumb mb-4 d-block" href="#-single.html">
+										<img src=@Url.Content("~/Images/"+item.Imagepath) asp-append-version="true" alt="" class="img-fluid w-100" />
+									</a>
+
+								</article>
+							</div>
+
+
+
+						}
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<div class="container" style="margin-left:auto; margin-right:auto;">
+	
+		<h1 style ="text-align: center;">What does the site aim for?</h1>
+		<h4 style ="text-align: center;">
+			The site aims to provide the service of purchasing crafts in a convenient way that helps the user
+			<br />
+			The site offers different distinct services. Try it yourself now. If you need something, or have a 
+			<br />
+			suggestion or modification, contact us from here ..
+		</h4>
+
+		<button type="button" class="btn success" onclick="@("window.location.href='" + @Url.Action("About", "User") + "'");" style="margin-left:auto; margin-right:auto; margin-bottom:100px; margin-top:50px; display: block; ">Contact Us</button>
+	
+	
+	
+	
+	</div>
+	
+
+
+	<script src="~/Home/plugins/jquery/jquery.js"></script>
+	<!-- Bootstrap jQuery -->
+	<script src="~/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="~/Home/plugins/bootstrap/js/popper.min.js"></script>
+	<!-- Owl caeousel -->
+	<script src="~/Home/plugins/owl-carousel/owl.carousel.min.js"></script>
+	<script src="~/Home/plugins/slick-carousel/slick.min.js"></script>
+	<script src="~/Home/plugins/magnific-popup/magnific-popup.js"></script>
+	<!-- Instagram Feed Js -->
+	<script src="~/Home/plugins/instafeed-js/instafeed.min.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+	<script src="~/Home/plugins/google-map/gmap.js"></script>
+	<!-- main js -->
+	<script src="~/Home/js/custom.js"></script>
+</body>
+</html>

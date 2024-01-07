@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Project.Models.User>
+
+@{
+    ViewData["Title"] = "Requisites";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewBag.n = ViewBag.userAdmin;
+}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Requisites</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="~/Request/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="~/Button/fonts/icomoon/style.css">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="~/Button/css/bootstrap.min.css">
+
+	<!-- Style -->
+	<link rel="stylesheet" href="~/Button/css/style.css">
+	
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Requisites Vendors</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-responsive-xl">
+						  <thead>
+						    <tr>
+								<th>Username</th>
+						    	<th>Email</th>
+								<th>Status</th>						      
+						    </tr>
+						  </thead>
+							<tbody>
+								@if (Model.Count() != 0)
+								{
+									@foreach (var item in Model)
+									{
+
+										<tr class="alert" role="alert">
+
+											<td>@Html.DisplayFor(modelItem => item.Username)</td>
+
+											<td class="d-flex align-items-center">
+
+												<div class="pl-3 email">
+													<span>@Html.DisplayFor(modelItem => item.Email)</span>
+													<span>@Html.DisplayFor(modelItem => item.Datecreated)</span>
+												</div>
+											</td>
+											<td>
+												@using (Html.BeginForm())
+												{
+													<input type="hidden" name="Id" value="@item.Id" />
+													<input type="hidden" name="Isaccepted" value="1" />
+													<button type="submit" class="btn mb-3 mr-3 btn-success">accept</button>
+												}
+												@using (Html.BeginForm())
+												{
+													<input type="hidden" name="Id" value="@item.Id" />
+													<input type="hidden" name="Isaccepted" value="0" />
+													<button type="submit" class="btn mb-3 mr-3 btn-danger" >denied</button>
+												}
+
+
+											</td>
+
+										</tr>
+									}
+								}
+								else
+								{
+									<tr>
+
+										<td colspan="4" rowspan="4">There is no Requisites</td>
+
+									</tr>
+								}
+							</tbody>						    
+						  
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="~/Request/js/jquery.min.js"></script>
+	<script src="~/Request/js/popper.js"></script>
+	<script src="~/Request/js/bootstrap.min.js"></script>
+  <script src="~/Request/js/main.js"></script>
+	<script src="~/Button/js/jquery-3.3.1.min.js"></script>
+	<script src="~/Button/js/popper.min.js"></script>
+	<script src="~/Button/js/bootstrap.min.js"></script>
+	<script src="~/Button/js/main.js"></script>
+	
+	</body>
+</html>

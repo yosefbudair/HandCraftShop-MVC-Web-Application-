@@ -1,0 +1,61 @@
+﻿@model Project.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>LogIn</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="~/ForLogin/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="~/ForLogin/css/style.css">
+</head>
+
+<body>
+
+	<div class="wrapper" style="background-image: url('/ForLogin/images/full1.jpg');">
+		<div class="inner">
+			<div class="image-holder">
+				<img src="~/ForLogin/images/small1.jpg" alt="">
+			</div>
+			<form asp-action="Login" class="register-form" id="login-form" enctype="multipart/form-data">
+				<h3>LogIn</h3>
+				<div class="form-wrapper">
+					<label for="UserName"></label>
+					<input asp-for="Username" placeholder="Username" class="form-control">
+					<i class="zmdi zmdi-account"></i>
+				</div>
+				<div class="form-wrapper">
+					<label for="Passwordd"></label>
+					<input asp-for="Passwordd" type="password" placeholder="Password" class="form-control" />
+					
+				</div>
+							
+				<div class="form-wrapper">
+					<input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+					<label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+				</div>
+				
+				<button type="submit" name="signin" id="signin" class="form-submit" value="Log in">
+					Register
+					<i class="zmdi zmdi-arrow-right"></i>
+				</button>
+
+				<a style="align-items: center; vertical-align: middle; display: flex; margin-top: 20px;	justify-content: center;" asp-action="Register" class="signup-image-link">Create an account</a>
+				<div class="form-wrapper" style="margin-top:10px; color:red; display: flex; 	justify-content: center;">
+					<p>@ViewBag.ErrorMessage</p>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+
+</body>
+</html>

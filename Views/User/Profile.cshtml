@@ -1,0 +1,158 @@
+﻿@model Project.Models.User
+
+@{
+	ViewData["Title"] = "Profile";
+	Layout = "~/Views/Shared/_UserLayout.cshtml";
+	ViewBag.n = ViewBag.userUser;
+}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FormWizard_v6</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="colorlib.com">
+
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="~/PEdit/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+	<script src="~/craft/create/javascript.js"></script>
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="~/PEdit/css/style.css">
+<style>
+		.file {
+			opacity: 0;
+			width: 0.1px;
+			height: 0.1px;
+			position: absolute;
+		}
+
+		.file-input label {
+			display: block;
+			position: relative;
+			width: 200px;
+			height: 50px;
+			border-radius: 25px;
+			background: linear-gradient(40deg,#ff6ec4,#7873f5);
+			box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-weight: bold;
+			cursor: pointer;
+			transition: transform .2s ease-out;
+		}
+
+		.file-name {
+			position: absolute;
+			bottom: -35px;
+			left: 10px;
+			font-size: 0.85rem;
+			color: #555;
+		}
+
+		input:hover + label,
+		input:focus + label {
+			transform: scale(1.02);
+		}
+
+		/* Adding an outline to the label on focus */
+		input:focus + label {
+			outline: 1px solid #000;
+			outline: -webkit-focus-ring-color auto 2px;
+		}
+</style>
+</head>
+<body>
+	<div class="wrapper" style="height:800px; margin-left: auto;   margin-right: auto;    margin-bottom: 100px;    margin-top: 100px; height:auto">
+		<form asp-action="Profile" enctype="multipart/form-data" >
+			<div id="wizard" style="height:auto">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<input type="hidden" asp-for="Id" />
+				<section>
+					<div class="form-header">
+						<div class="avartar" style=" margin-left: auto;    margin-right: auto;   margin-bottom: 20px;">
+							<a href="#" style="margin-left: 20px;">
+								<img src=@Url.Content("~/Images/" + ViewBag.n.Imagepath) alt="Profile" class="rounded-circle" height="150px" width="150px" id="imageResult" />
+							</a>
+							
+							<div class="avartar-picker" style="padding-left:0 !important">
+
+
+
+							<div class="file-input">
+									<input asp-for="ImageFile" onchange="readURL(this);" type="file" id="file" class="file inputfile" data-multiple-caption="{count} files selected" multiple>
+							<label for="file">
+							Select file
+							<p class="file-name"></p>
+							</label>
+							</div>
+
+							
+							</div>
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<div class="form-holder ">
+							<label asp-for="Fname" class="control-label">First Name :</label>
+							<input asp-for="Fname" class="form-control" />
+							<span asp-validation-for="Fname" class="text-danger"></span>
+							<!--<input type="text" placeholder="First Name" class="form-control">-->
+						</div>
+						<div class="form-holder">
+							<label asp-for="Lname" class="control-label">Last Name :</label>
+							<input asp-for="Lname" class="form-control" />
+							<span asp-validation-for="Lname" class="text-danger"></span>
+							<!--<input type="text" placeholder="Last Name" class="form-control">-->
+						</div>
+					</div>
+					<div class="form-holder">
+						<label asp-for="Username" class="control-label">UserName :</label>
+						<input asp-for="Username" class="form-control" />
+						<span asp-validation-for="Username" class="text-danger"></span>
+						<!--<input type="text" placeholder="Email" class="form-control">-->
+					</div>
+					<div class="form-holder">
+						<label asp-for="Email" class="control-label">Email :</label>
+						<input asp-for="Email" class="form-control" />
+						<span asp-validation-for="Email" class="text-danger"></span>
+						<!--<input type="text" placeholder="Email" class="form-control">-->
+					</div>
+					<div class="form-holder">
+						<label asp-for="Passwordd" class="control-label">Password :</label>
+						<input asp-for="Passwordd" type="password" class="form-control" />						
+						<!--<input type="text" placeholder="Email" class="form-control">-->
+					</div>
+					<div class="form-holder">
+						<label asp-for="Passwordd" class="control-label">New Password :</label>
+						<input type="password" class="form-control" name="newpass" />
+						<!--<input type="text" placeholder="Email" class="form-control">-->
+					</div>
+					<div class="form-wrapper" style="margin-top:10px; color:red; display: flex; 	justify-content: center;">
+						<p>@ViewBag.pass</p>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Save" class="btn btn-primary" />
+					</div>
+				</section>
+			</div>
+		</form>
+	</div>
+
+
+	<script src="~/PEdit/js/jquery-3.3.1.min.js"></script>
+
+	<!-- JQUERY STEP -->
+	<script src="~/PEdit/js/jquery.steps.js"></script>
+
+	<script src="~/PEdit/js/main.js"></script>
+	<!-- Template created and distributed by Colorlib -->
+
+</body>
+</html>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}

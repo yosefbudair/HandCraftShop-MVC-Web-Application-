@@ -1,0 +1,307 @@
+﻿@model Tuple< IEnumerable<Project.Models.Craft> , IEnumerable<Project.Models.User> >
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.n = ViewBag.userAdmin;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/ForAdmin/Dashboard/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="~/ForAdmin/Dashboard/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/ForAdmin/Dashboard/libs/css/style.css">
+    <link rel="stylesheet" href="~/ForAdmin/Dashboard/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="~/ForAdmin/Dashboard/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="~/ForAdmin/Dashboard/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="~/ForAdmin/Dashboard/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/ForAdmin/Dashboard/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/ForAdmin/Dashboard/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+<div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                            <h2 class="pageheader-title">Admin Dashboard</h2>                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="ecommerce-widget">
+
+                        <div class="row">
+                        <!-- ============================================================== -->
+                        <!-- sales  -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="card border-3 border-top border-top-primary">
+                                <div class="card-body">
+                                    <h5 class="text-muted">All Seals</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1">@ViewBag.allseals</h1>
+                                    </div>   
+                                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fas fa-cart-arrow-down"></i></span><span class="ml-1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end sales  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- new customer  -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="card border-3 border-top border-top-primary">
+                                <div class="card-body">
+                                    <h5 class="text-muted">Amount Earned</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1">$@(String.Format("{0:0.00}", ViewBag.Amountearned))</h1>
+                                    </div>
+                                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-dollar"></i></span><span class="ml-1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end new customer  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- visitor  -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="card border-3 border-top border-top-primary">
+                                <div class="card-body">
+                                    <h5 class="text-muted">Num of User Acount</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1">@ViewBag.numofusers</h1>
+                                    </div>
+                                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fas fa-user-alt"></i></span><span class="ml-1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end visitor  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- total orders  -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="card border-3 border-top border-top-primary">
+                                <div class="card-body">
+                                    <h5 class="text-muted">Num of Vendor Acount</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1">@ViewBag.numofvendor</h1>
+                                    </div>
+                                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fas fa-user-alt"></i></span><span class="ml-1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end total orders  -->
+                        <!-- ============================================================== -->
+
+
+                    </div>                      
+                     
+                    <div class="row">
+                           
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                            <div>
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            </div>
+                            </div>
+                           
+                           
+                        </div>
+
+
+
+                    <div class="row">
+                            <!-- ============================================================== -->
+                      
+                            <!-- ============================================================== -->
+
+                                          <!-- recent orders  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-8 col-lg-12 col-md-8 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Most 9 Crafts Sales</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">#</th>                                                        
+                                                        <th class="border-0">Craft Name</th>
+                                                        <th class="border-0">Price</th>
+                                                        <th class="border-0">Sales</th>
+                                                        <th class="border-0">Total Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @{
+                                                    var count = 1; 
+                                                }
+                                                    @foreach (var item in Model.Item1)
+                                                {
+                                                    if (count < 10)
+                                                    {
+                                                        <tr>
+                                                            <td>@count</td>                                                       
+                                                            <td>@item.Name </td>
+                                                            <td>@item.Price</td>
+                                                            <td>@item.Sales</td>
+                                                            <td>@(String.Format("{0:0.00}", (item.Price * item.Sales)))</td>
+                                                        </tr>
+                                                    }
+                                                    count++;
+                                                }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                            </div>
+
+
+                        </div>
+                          
+                        <div class="col-xl-4 col-lg-12 col-md-6 col-sm-12 col-12">
+                            <!-- ============================================================== -->
+                            <!-- top perfomimg  -->
+                            <!-- ============================================================== -->
+                            <div class="card">
+                                <h5 class="card-header">Vendor State</h5>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table no-wrap p-table">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    <th class="border-0">#</th>
+                                                    <th class="border-0">Vendor Name</th>
+                                                    <th class="border-0">Sales</th>
+                                                    <th class="border-0">Total Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    var num = 0;
+                                                }
+                                                @foreach (var item2 in Model.Item2)
+                                                {
+                                                    if (num < 7)
+                                                    {
+                                                        int countsal = 0;
+                                                        double countpri = 0;
+
+                                                        @foreach (var item in Model.Item1.Where(x => x.UserId == item2.Id))
+                                                        {
+                                                            countsal += Convert.ToInt32(item.Sales);
+                                                            countpri += Convert.ToDouble(item.Sales * item.Price);
+                                                        }
+                                                        <tr>
+                                                            <td>@num</td>
+                                                            <td>@item2.Fname @item2.Lname</td>
+                                                            <td>@countsal</td>
+                                                            <td>@(String.Format("{0:0.00}", countpri))</td>
+                                                        </tr>
+                                                    }
+                                                    num++;
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end top perfomimg  -->
+                            <!-- ============================================================== -->
+                        </div>
+                          
+                        
+                </div>
+                
+
+            </div>
+            
+        </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+                var x = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.categoryname));
+        var y = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.count));
+
+  const data = {
+    labels: x,
+    datasets: [{
+      label: 'Number of Crafts in Category',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: y,
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+</script>
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+    <script src="~/ForAdmin/Dashboard/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="~/ForAdmin/Dashboard/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="~/ForAdmin/Dashboard/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="~/ForAdmin/Dashboard/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="~/ForAdmin/Dashboard/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="~/ForAdmin/Dashboard/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="~/ForAdmin/Dashboard/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="~/ForAdmin/Dashboard/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="~/ForAdmin/Dashboard/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="~/ForAdmin/Dashboard/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="~/ForAdmin/Dashboard/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="~/ForAdmin/Dashboard/libs/js/dashboard-ecommerce.js"></script>
+
+
+
+
+</body>
+</html>

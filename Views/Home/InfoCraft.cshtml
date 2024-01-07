@@ -1,0 +1,165 @@
+﻿@model Tuple<Project.Models.Craft , IEnumerable<Project.Models.Testimonial>>
+@{
+    ViewData["Title"] = "InfoCraft";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+
+
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/Craft/Create/style.css" />
+    <link rel="stylesheet" href="~/Craft/Edit/style.css" />
+    <script src="~/craft/create/javascript.js"></script>
+
+    <link rel="stylesheet" href="~/ab/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/ab/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/ab/css/style.css">
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+    <style>
+        .testimony-wrap .quote i {
+            font-size: 40px;
+            color: #0062cc;
+        }
+    </style>
+
+    <div class="container emp-profile">
+        <form  enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img id="imageResult" src=@Url.Content("~/Images/" +Model.Item1.Imagepath) alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            @Model.Item1.Name
+                        </h5>
+                        <h6>
+                            Crafts of @Model.Item1.Category.Name
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style="margin-left: 60px;">
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-6">
+                                    <label>Name :</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p> @Model.Item1.Name</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-6">
+                                    <label>Category Name :</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p> @Model.Item1.Category.Name</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-6">
+                                    <label>Price :</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p> @Model.Item1.Price $</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-md-6">
+                                    <label>Description :</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p> @Model.Item1.Description</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12" style="margin-top:20px">
+
+                <div class="col-md-8" style=" margin-right: auto; margin-left: auto;">
+
+                    <div class="d-flex flex-row add-comment-section mt-4 mb-4">
+                        <img class="img-fluid img-responsive rounded-circle mr-2" src="~/Images/user.png" width="38">
+                        <input type="text" name="comment" class="form-control mr-3" placeholder="Add comment" required>
+                        <button class="btn btn-primary" type="submit" onclick="@("window.location.href='" + @Url.Action("Login", "LoginandRegistration") + "'");">Comment</button>
+                    </div>
+                    <div class="form-wrapper" style="margin-top:10px; color:green; display: flex; 	justify-content: center;">
+                        <p>@ViewBag.test_warning</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <section class="ftco-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="featured-carousel owl-carousel">
+                                    @if (Model.Item2.Count() != 0)
+                                    {
+                                        @foreach (var item in Model.Item2)
+                                        {
+                                            <div class="item">
+                                                <div class="testimony-wrap d-flex">
+                                                    <div class="user-img" style="background-image: url('/Images/@item.User.Imagepath')">
+                                                    </div>
+                                                    <div class="text pl-4">
+                                                        <span class="quote d-flex align-items-center justify-content-center">
+                                                            <i class="ion-ios-quote"></i>
+                                                        </span>
+                                                        <p>@item.Coomment</p>
+                                                        <p class="name">@item.User.Fname @item.User.Lname</p>
+                                                        <span class="position" style="color: #0062cc;">@item.User.Username</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div>There is no Comments</div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="~/ab/js/jquery.min.js"></script>
+    <script src="~/ab/js/popper.js"></script>
+    <script src="~/ab/js/bootstrap.min.js"></script>
+    <script src="~/ab/js/owl.carousel.min.js"></script>
+    <script src="~/ab/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿@model IEnumerable<Project.Models.Order>
+
+@{
+    ViewData["Title"] = "MyOrder";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewBag.n = ViewBag.userUser;
+}
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    .btn1 {
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+        padding: 8px 18px;
+        font-size: 10px;
+        cursor: pointer;
+        margin-left: 18px;
+        margin-bottom: 10px;
+    }
+
+    .highlighter {
+        border-color: #000000;
+    color: black;
+    }
+
+        .highlighter:hover {
+            background-color: #378fe8;
+            color: white;
+        }
+
+        .trash {
+        border-color: #000000;
+    color: black;
+    }
+
+        .trash:hover {
+            background-color: #e02121;
+            color: white;
+        }
+        
+        .check{
+            margin: 0 auto;
+    display: block;
+    width: 6%;
+    block-size: 40px;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-family: inherit;
+    border: 0px solid #e6e6e6;
+        background-color: #147ef1;
+        color:white
+        }
+
+        .check:hover {
+            background-color: #0e73e1;
+            color: white;
+        }
+
+
+</style>
+<body onload="Geeks()">
+    <h3 style="font-family: inherit; text-align: center; margin-top: 10rem; margin-bottom:20px">Your Order </h3>
+    <table class="table table-responsive-xl table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Craft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numpieces)
+            </th>
+            <th>
+                Total
+            </th>
+            <th></th>          
+            
+        </tr>
+    </thead>
+    <tbody>
+            @if (Model.Count() != 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Craft.Name)
+                        </td>  
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Craft.Price) $                  
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numpieces)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price) $
+                            <input type="hidden" value="@item.Price" name="array[]" />
+                        </td>
+                        <td>
+
+                            @using (Html.BeginForm("DeleteOrder", "User", FormMethod.Post))
+                            {
+                                <input type="hidden" value="@item.Id" name="id" />
+                                <a asp-action="EditOrder" asp-route-id="@item.Id" class="btn1 highlighter"><i class="fa fa-pencil"></i></a>
+                                <button type="submit" class="btn1 trash"><i class="bi bi-trash"></i></button>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {                           
+                <tr>
+
+                    <td colspan="5" rowspan="4">There is no Requisites</td>
+
+                </tr>
+            }
+    </tbody>    
+</table>
+</body>
+@if (Model.Count() != 0)
+{
+    @using (Html.BeginForm("Credit", "User", FormMethod.Get))
+    {
+        <div style="margin-top:30px; margin-bottom:8rem; ">
+
+            <h6 style="font-family: inherit; text-align: center;">We Just delivaring in Jordan Enter Your Address :</h6>
+            <input  name="price"  type="text"  hidden id="pri">
+            <input class="w3-input " name="Address" style="width:25%; margin-left:auto; margin-right:auto " type="text" placeholder="Your Address" required>
+            <h6 style="font-family: inherit; text-align: center;"> Delivery Service            --------------------------------     <i>5</i> $ </h6>
+            <h6 style="font-family: inherit; text-align: center;"> The price of all crafts     --------------------------------     <i id="par"></i> $ </h6>
+            <h6 style="font-family: inherit; text-align: center;"> Total Price                 --------------------------------     <i id="par1"></i> $ </h6>
+            <button type="submit" class="check" style=" margin-left:auto; margin-right:auto ">Chekout</button>
+        </div>
+    }
+}
+
+
+
+
+<script>
+    var k = 0;
+    function Geeks() {
+        var input = document.getElementsByName('array[]');       
+        for (var i = 0; i < input.length; i++) {
+            var a = (input[i].value * 1);
+            k += a;
+        }
+        document.getElementById("pri").value = k + 5;
+        document.getElementById("par").innerHTML = k ;
+        document.getElementById("par1").innerHTML = k + 5;
+
+        
+    }
+</script>

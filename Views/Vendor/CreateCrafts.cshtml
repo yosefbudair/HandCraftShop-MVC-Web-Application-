@@ -1,0 +1,95 @@
+﻿    @model Project.Models.Craft
+@{
+    ViewData["Title"] = "CreateCrafts";
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+    ViewBag.n = ViewBag.userVendor;
+}
+<html>
+<head>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="~/Craft/Create/style.css" />
+<link rel="stylesheet" href="~/Craft/Edit/style.css" />
+<script src="~/craft/create/javascript.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+<div class="container emp-profile">
+    <form asp-action="CreateCrafts" asp-controller="Vendor" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img id="imageResult" src="~/Images/full1.jpg" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
+
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+
+                        <input asp-for="ImageFile" id="upload" type="file" onchange="readURL(this);" class="form-control border-0" />                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        Name
+                    </h5>
+                    <h6>
+                        Type Category
+                    </h6>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Create" />
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style="margin-left: 60px;">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-md-6">
+                                <label>Name :</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input asp-for="Name" placeholder="Name" class="form-control" />                                
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-md-6">
+                                <label>Category Name :</label>
+                            </div>
+                            <div class="col-md-6">
+                                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-md-6">
+                                <label>Price :</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input asp-for="Price" class="form-control" />
+                                
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-md-6">
+                                <label>Description :</label>
+                            </div>
+                            <div class="col-md-6">
+                                <textarea asp-for="Description" rows="4" cols="50">Enter text here...</textarea>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
